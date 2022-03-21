@@ -1,0 +1,26 @@
+[All]
+title = All
+# sortexpr = desc:importance
+groupexpr = priority,context
+show_all = 1
+filterexpr = -@blog -@work -@listen -@watch -+project -+media  -@recurring
+
+[Today]
+title = Today
+sortexpr = desc:importance
+groupexpr = context
+show_all = 0
+filterexpr = due:<=today
+
+[Tomorrow]
+title = Tomorrow
+sortexpr = desc:importance
+groupexpr = context
+show_all = 0
+filterexpr = due:tomorrow
+
+[Work]
+title = Work
+sortexpr = asc:due
+show_all = 1
+filterexpr = @work
