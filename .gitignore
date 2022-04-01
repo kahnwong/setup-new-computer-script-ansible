@@ -2,3 +2,4 @@ config.fish
 ssh_config
 vscode_settings.json
 wakatime.cfg
+mac-cli/

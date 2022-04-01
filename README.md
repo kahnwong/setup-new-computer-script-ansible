@@ -87,3 +87,28 @@ brew switch git list
 # Roll back to a currently installed previous version (example: git 2.25.0)
 brew switch git 2.25.0
 ```
+
+### pre-commit
+```bash
+# run pre-commit hooks for all files in folder
+$ pre-commit run --files **/*.*
+
+# run pre-commit hooks for all files in the repo
+$ pre-commit run --all-files
+
+# enable for downloaded repo
+$ git config --global init.templateDir ~/.git-template
+$ pre-commit init-templatedir ~/.git-template
+```
+
+## vscode
+### Backup extensions list
+```
+code --list-extensions | xargs -L 1 echo code --install-extension > ext_install.sh
+```
+
+### Backup config
+```
+cp "/users/$USER/Library/Application Support/Code/User/keybindings.json" .
+cp "/users/$USER/Library/Application Support/Code/User/settings.json" .
+```
