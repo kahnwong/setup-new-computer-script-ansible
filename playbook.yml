@@ -25,6 +25,7 @@
       - firefox-nightly
       - flycut
       - fork
+      - gitup
       - google-chrome
       - hot
       - iina
@@ -75,11 +76,13 @@
       - visidata
       # docker
       - ctop
+      - dive
       - lazydocker
-      # github
+      # git
       - act
       - gh
       - git
+      - git-delta
       - pre-commit
       # python
       - black
@@ -105,6 +108,8 @@
       - exa
       - fd
       - fx
+      - fzf
+      - git-xargs
       - glow
       - gping
       - htop
@@ -113,6 +118,8 @@
       - ripgrep
       - rsync
       - sops
+      - thefuck
+      - tldr
       - tmux
       - tree
       - watch
@@ -133,8 +140,7 @@
       - task
 
     npm_packages:
-      - git-split-diffs
-      - tldr
+      - iponmap
 
     python_modules:
       - sqlfluff
@@ -217,7 +223,7 @@
         global: yes
         state: present
         executable: /opt/homebrew/bin/npm
-      with_items: '{{ npm_packages }}'
+      with_items: "{{ npm_packages }}"
 
     - name: Installing Python Modules
       community.general.pipx:
@@ -225,7 +231,7 @@
         state: install
         force: yes
         executable: /opt/homebrew/bin/pipx
-      with_items: '{{ python_modules }}'
+      with_items: "{{ python_modules }}"
 
     - name: Installing Mac-CLI
       shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/guarinogabriel/mac-cli/master/mac-cli/tools/install)"
@@ -233,22 +239,21 @@
     - name: Installing Default Python
       shell: /opt/homebrew/bin/pyenv install -s 3.9.11
 
-
 - name: Install MacOS App Store Apps
   hosts: localhost
   vars:
     app_ids:
-    - 1176895641 # spark
-    - 1451685025 # wireguard
-    - 1475387142 # tailscale
-    - 1510445899 # meeter
-    - 539883307 # LINE
-    - 568494494 # pocket
-    - 585829637 # todoist
+      - 1176895641 # spark
+      - 1451685025 # wireguard
+      - 1475387142 # tailscale
+      - 1510445899 # meeter
+      - 539883307 # LINE
+      - 568494494 # pocket
+      - 585829637 # todoist
 
   tasks:
     - shell: "mas install {{ item }}"
-      with_items: '{{ app_ids }}'
+      with_items: "{{ app_ids }}"
       environment:
         PATH: $PATH:/opt/homebrew/bin/
 
@@ -320,8 +325,21 @@
   tasks:
     - shell: |
         code --install-extension "{{ item }}"
-      with_items: '{{ vscode_extensions }}'
+      with_items: "{{ vscode_extensions }}"
 
+- name: Install gh cli extensions
+  hosts: localhost
+  vars:
+    ghcli_extensions:
+      - dlvhdr/gh-dash
+      - kawarimidoll/gh-graph
+      - mislav/gh-branch
+      - seachicken/gh-poi
+  tasks:
+    - shell: |
+        gh extension install "{{ item }}"
+      with_items: "{{ ghcli_extensions }}"
+      ignore_errors: yes # throws error if already installed
 
 - name: System Tweaks
   hosts: localhost
@@ -361,7 +379,6 @@
       shell: |
         spctl --master-disable
 
-
 - name: Setup Git Config
   hosts: localhost
   vars_prompt:
@@ -377,12 +394,12 @@
       community.general.git_config:
         name: user.name
         scope: global
-        value: '{{ git_name }}'
+        value: "{{ git_name }}"
     - name: Set email
       community.general.git_config:
         name: user.email
         scope: global
-        value: '{{ git_email }}'
+        value: "{{ git_email }}"
     - name: Use ssh instread of https
       command: git config --global url."git@github.com:".insteadOf https://github.com/
     - name: Set Git to store credentials in Keychain
@@ -397,12 +414,14 @@
         value: ~/.git-template
     - name: Init pre-commit
       shell: pre-commit init-templatedir ~/.git-template
-    - name: Set diff display
-      community.general.git_config:
-        name: core.pager
-        scope: global
-        value: git-split-diffs --color | less -RFX
-
+    - name: Set syntax highlighting
+      shell: |
+        git config --global core.pager delta
+        git config --global delta.navigate true
+        git config --global delta.side-by-side true
+        git config --global merge.conflictstyle diff3
+        git config --global diff.colorMoved default
+        git config --global interactive.diffFilter delta --color-only
 
 - name: Setup SSH
   hosts: localhost
@@ -426,7 +445,6 @@
       when:
         - not ssh_key_git_check.stat.exists
 
-
 - name: Setup Dotfiles
   hosts: localhost
 
@@ -438,6 +456,9 @@
 
     - name: "Write fish Config"
       copy: src=./dotfiles/config.fish dest=~/.config/fish/config.fish force=no
+
+    - name: "Write thefuck Config"
+      copy: src=./dotfiles/fuck.fish dest=~/.config/fish/functions/fuck.fish force=no
 
     - name: "Write starship Config"
       copy: src=./dotfiles/starship.toml dest=~/.config/starship.toml force=no
@@ -455,7 +476,6 @@
 
     - name: "Write Wakatime Config"
       copy: src=./dotfiles/wakatime.cfg dest=~/.wakatime.cfg force=no
-
 
 - name: Setup nvim
   hosts: localhost
