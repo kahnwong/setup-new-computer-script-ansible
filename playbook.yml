@@ -433,7 +433,7 @@
         state: directory
 
     - name: "Write ssh Config"
-      copy: src=./dotfiles/ssh_config dest=~/.ssh/config force=no
+      copy: src=./dotfiles/.ssh/config dest=~/.ssh/config force=no
 
     - name: Check SSH key for git
       stat:
@@ -455,19 +455,19 @@
         state: directory
 
     - name: "Write fish Config"
-      copy: src=./dotfiles/config.fish dest=~/.config/fish/config.fish force=no
+      copy: src=./dotfiles/.config/fish/config.fish dest=~/.config/fish/config.fish force=no
 
     - name: "Write fish Config for work"
-      copy: src=./dotfiles/work.fish dest=~/.config/fish/conf.d/work.fish force=no
+      copy: src=./dotfiles/.config/fish/conf.d/work.fish dest=~/.config/fish/conf.d/work.fish force=no
 
     - name: "Write thefuck Config"
-      copy: src=./dotfiles/fuck.fish dest=~/.config/fish/functions/fuck.fish force=no
+      copy: src=./dotfiles/.config/fish/functions/fuck.fish dest=~/.config/fish/functions/fuck.fish force=no
 
     - name: "Write starship Config"
-      copy: src=./dotfiles/starship.toml dest=~/.config/starship.toml force=no
+      copy: src=./dotfiles/.config/starship.toml dest=~/.config/starship.toml force=no
 
     - name: "Write pyenv Config"
-      copy: src=./dotfiles/pyenv_version dest=~/.pyenv/version force=no
+      copy: src=./dotfiles/.pyenv/version dest=~/.pyenv/version force=no
 
     - name: "Write topydo Config"
       copy: |
@@ -478,7 +478,7 @@
       copy: src=./dotfiles/vscode_settings.json dest="~/Library/Application Support/Code/User/settings.json" force=no
 
     - name: "Write Wakatime Config"
-      copy: src=./dotfiles/wakatime.cfg dest=~/.wakatime.cfg force=no
+      copy: src=./dotfiles/.wakatime.cfg dest=~/.wakatime.cfg force=no
 
 - name: Setup nvim
   hosts: localhost
@@ -490,7 +490,7 @@
         state: directory
 
     - name: "Write nvim Config"
-      copy: src=./dotfiles/init.vim dest=~/.config/nvim/init.vim force=no
+      copy: src=./dotfiles/.config/nvim/init.vim dest=~/.config/nvim/init.vim force=no
 
     - name: "Install vim-plug"
       shell: |
