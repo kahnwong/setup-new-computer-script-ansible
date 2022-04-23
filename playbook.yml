@@ -148,6 +148,83 @@
       - topydo[columns]
       - trufflehog
 
+    appstore_app_ids:
+      - 1176895641 # spark
+      - 1451685025 # wireguard
+      - 1475387142 # tailscale
+      - 1510445899 # meeter
+      - 539883307 # LINE
+      - 568494494 # pocket
+      - 585829637 # todoist
+
+    vscode_extensions:
+      - 4ops.terraform
+      - akamud.vscode-theme-onelight
+      - amazonwebservices.aws-toolkit-vscode
+      - bierner.markdown-mermaid
+      - bladnman.auto-align
+      - bmalehorn.vscode-fish
+      - bungcip.better-toml
+      - christian-kohler.path-intellisense
+      - cschleiden.vscode-github-actions
+      - dongfg.vscode-beancount-formatter
+      - dorzey.vscode-sqlfluff
+      - earshinov.permute-lines
+      - erd0s.terraform-autocomplete
+      - esbenp.prettier-vscode
+      - flesler.url-encode
+      - fvclaus.sort-json-array
+      - gerane.Language-TodoTXT
+      - GitHub.copilot
+      - GitHub.vscode-pull-request-github
+      - GrapeCity.gc-excelviewer
+      - hancel.markdown-image
+      - hashicorp.terraform
+      - helgardrichard.helium-icon-theme
+      - iceyer.toml-formatter
+      - joffreykern.markdown-toc
+      - Lencerf.beancount
+      - marp-team.marp-vscode
+      - me-dutour-mathieu.vscode-github-actions
+      - mechatroner.rainbow-csv
+      - ms-azuretools.vscode-docker
+      - ms-kubernetes-tools.vscode-kubernetes-tools
+      - ms-python.python
+      - ms-python.vscode-pylance
+      - ms-toolsai.jupyter
+      - ms-toolsai.jupyter-keymap
+      - ms-toolsai.jupyter-renderers
+      - ms-vscode-remote.remote-containers
+      - ms-vscode-remote.remote-ssh
+      - ms-vscode-remote.remote-ssh-edit
+      - ms-vscode-remote.vscode-remote-extensionpack
+      - ms-vscode.atom-keybindings
+      - ms-vsliveshare.vsliveshare
+      - mushan.vscode-paste-image
+      - pnp.polacode
+      - ptweir.python-string-sql
+      - qezhu.gitlink
+      - redhat.vscode-yaml
+      - ryu1kn.partial-diff
+      - ryu1kn.text-marker
+      - shakram02.bash-beautify
+      - sourcery.sourcery
+      - TabNine.tabnine-vscode
+      - TakumiI.markdowntable
+      - tht13.html-preview-vscode
+      - vincentfiestada.cold-horizon-vscode
+      - WakaTime.vscode-wakatime
+      - yaruson.ascii-unicode-escape
+      - yzane.markdown-pdf
+      - zamerick.vscode-caddyfile-syntax
+      - zhuangtongfa.material-theme
+
+    ghcli_extensions:
+      - dlvhdr/gh-dash
+      - kawarimidoll/gh-graph
+      - mislav/gh-branch
+      - seachicken/gh-poi
+
     upgrade_homebrew_packages: false
     install_homebrew_if_missing: true
 
@@ -239,107 +316,22 @@
     - name: Installing Default Python
       shell: /opt/homebrew/bin/pyenv install -s 3.10.3
 
-- name: Install MacOS App Store Apps
-  hosts: localhost
-  vars:
-    app_ids:
-      - 1176895641 # spark
-      - 1451685025 # wireguard
-      - 1475387142 # tailscale
-      - 1510445899 # meeter
-      - 539883307 # LINE
-      - 568494494 # pocket
-      - 585829637 # todoist
-
-  tasks:
-    - shell: "mas install {{ item }}"
-      with_items: "{{ app_ids }}"
+    - name: Install MacOS App Store Apps
+      shell: "mas install {{ item }}"
+      with_items: "{{ appstore_app_ids }}"
       environment:
         PATH: $PATH:/opt/homebrew/bin/
 
-- name: Install Visual Studio Code extensions
-  hosts: localhost
-  vars:
-    vscode_extensions:
-      - 4ops.terraform
-      - akamud.vscode-theme-onelight
-      - amazonwebservices.aws-toolkit-vscode
-      - bierner.markdown-mermaid
-      - bladnman.auto-align
-      - bmalehorn.vscode-fish
-      - bungcip.better-toml
-      - christian-kohler.path-intellisense
-      - cschleiden.vscode-github-actions
-      - dongfg.vscode-beancount-formatter
-      - dorzey.vscode-sqlfluff
-      - earshinov.permute-lines
-      - erd0s.terraform-autocomplete
-      - esbenp.prettier-vscode
-      - flesler.url-encode
-      - fvclaus.sort-json-array
-      - gerane.Language-TodoTXT
-      - GitHub.copilot
-      - GitHub.vscode-pull-request-github
-      - GrapeCity.gc-excelviewer
-      - hancel.markdown-image
-      - hashicorp.terraform
-      - helgardrichard.helium-icon-theme
-      - iceyer.toml-formatter
-      - joffreykern.markdown-toc
-      - Lencerf.beancount
-      - marp-team.marp-vscode
-      - me-dutour-mathieu.vscode-github-actions
-      - mechatroner.rainbow-csv
-      - ms-azuretools.vscode-docker
-      - ms-kubernetes-tools.vscode-kubernetes-tools
-      - ms-python.python
-      - ms-python.vscode-pylance
-      - ms-toolsai.jupyter
-      - ms-toolsai.jupyter-keymap
-      - ms-toolsai.jupyter-renderers
-      - ms-vscode-remote.remote-containers
-      - ms-vscode-remote.remote-ssh
-      - ms-vscode-remote.remote-ssh-edit
-      - ms-vscode-remote.vscode-remote-extensionpack
-      - ms-vscode.atom-keybindings
-      - ms-vsliveshare.vsliveshare
-      - mushan.vscode-paste-image
-      - pnp.polacode
-      - ptweir.python-string-sql
-      - qezhu.gitlink
-      - redhat.vscode-yaml
-      - ryu1kn.partial-diff
-      - ryu1kn.text-marker
-      - shakram02.bash-beautify
-      - sourcery.sourcery
-      - TabNine.tabnine-vscode
-      - TakumiI.markdowntable
-      - tht13.html-preview-vscode
-      - vincentfiestada.cold-horizon-vscode
-      - WakaTime.vscode-wakatime
-      - yaruson.ascii-unicode-escape
-      - yzane.markdown-pdf
-      - zamerick.vscode-caddyfile-syntax
-      - zhuangtongfa.material-theme
-
-  tasks:
-    - shell: |
+    - name: Install Visual Studio Code extensions
+      shell: |
         code --install-extension "{{ item }}"
       with_items: "{{ vscode_extensions }}"
 
-- name: Install gh cli extensions
-  hosts: localhost
-  vars:
-    ghcli_extensions:
-      - dlvhdr/gh-dash
-      - kawarimidoll/gh-graph
-      - mislav/gh-branch
-      - seachicken/gh-poi
-  tasks:
-    - shell: |
+    - name: Install gh cli extensions
+      shell: |
         gh extension install "{{ item }}"
       with_items: "{{ ghcli_extensions }}"
-      ignore_errors: yes # throws error if already installed
+      ignore_errors: yes # gh extension install throws error if already installed
 
 - name: System Tweaks
   hosts: localhost
