@@ -71,35 +71,37 @@
       - zoom
 
     brew_packages:
-      # ds & ml
+      ### ds & ml
       - apache-spark
       - visidata
-      # docker
+      - sqlfluff
+      ### docker
       - ctop
       - dive
       - lazydocker
-      # git
+      ### git
       - act
       - gh
       - git
       - git-delta
+      - git-xargs
       - pre-commit
-      # python
+      ### python
       - black
       - pipenv
       - pipx
       - pyenv-virtualenv
       - pyenv-which-ext
       - pyenv
-      # terraform
+      ### terraform
       - terraform-docs
       - terraform
       - tflint
       - tfsec
-      # shell
+      ### shell
       - fish
       - starship
-      # utilities
+      ### utilities
       - aria2
       - bat
       - colordiff
@@ -109,9 +111,9 @@
       - fd
       - fx
       - fzf
-      - git-xargs
       - glow
       - gping
+      - graphviz
       - htop
       - jq
       - ncdu
@@ -120,16 +122,14 @@
       - sops
       - thefuck
       - tldr
-      - tmux
       - tree
       - watch
       - wget
       - yt-dlp
-      # misc
+      ### misc
       - awscli
       - caddy
       - geckodriver
-      - graphviz
       - hugo
       - java
       - mas
@@ -138,12 +138,12 @@
       - node
       - pgcli
       - task
+      - tmux
 
     npm_packages:
       - iponmap
 
     python_modules:
-      - sqlfluff
       - topydo
       - topydo[columns]
       - trufflehog
@@ -270,21 +270,23 @@
 
     - name: Installing Homebrew Cask Packages
       homebrew_cask:
-        name: "{{ brew_cask_packages }}"
+        name: "{{ item }}"
         state: present
         path: /opt/homebrew/bin
       register: result
       until: result is successful
       when: homebrew_check.stat.exists
+      with_items: "{{ brew_cask_packages }}"
 
     - name: Installing Homebrew Packages
       homebrew:
-        name: "{{ brew_packages }}"
+        name: "{{ item }}"
         state: present
         path: /opt/homebrew/bin
       register: result
       until: result is successful
       when: homebrew_check.stat.exists
+      with_items: "{{ brew_packages }}"
 
     - name: Installing Fonts
       shell: |
