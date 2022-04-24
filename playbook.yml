@@ -421,7 +421,7 @@
   hosts: localhost
 
   tasks:
-    - name: "Create nvim Config Directory"
+    - name: "Create SSH Config Directory"
       file:
         path: ~/.ssh/
         state: directory
