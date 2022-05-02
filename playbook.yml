@@ -21,8 +21,10 @@
       - dozer
       - dropbox
       - fbreader
+      - fig
       - firefox
       - firefox-nightly
+      - flameshot
       - flycut
       - fork
       - gitup
@@ -53,7 +55,6 @@
       - simple-comic
       - slack
       - spectacle
-      - spotify
       - standard-notes
       - stats
       - syncthing
@@ -115,6 +116,7 @@
       - gping
       - graphviz
       - htop
+      - httpie
       - jq
       - ncdu
       - ripgrep
@@ -150,6 +152,7 @@
 
     appstore_app_ids:
       - 1176895641 # spark
+      - 1423210932 # flow - focus & pomodoro timer
       - 1451685025 # wireguard
       - 1475387142 # tailscale
       - 1510445899 # meeter
