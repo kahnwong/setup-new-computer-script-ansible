@@ -171,9 +171,8 @@
       - christian-kohler.path-intellisense
       - cschleiden.vscode-github-actions
       - dongfg.vscode-beancount-formatter
+      - donjayamanne.python-environment-manager
       - dorzey.vscode-sqlfluff
-      - earshinov.permute-lines
-      - erd0s.terraform-autocomplete
       - esbenp.prettier-vscode
       - flesler.url-encode
       - fvclaus.sort-json-array
@@ -182,14 +181,19 @@
       - GitHub.vscode-pull-request-github
       - GrapeCity.gc-excelviewer
       - hancel.markdown-image
+      - hashicorp.hcl
       - hashicorp.terraform
+      - hbenl.vscode-test-explorer
       - helgardrichard.helium-icon-theme
       - iceyer.toml-formatter
       - joffreykern.markdown-toc
+      - k9982874.github-gist-explorer
       - Lencerf.beancount
+      - leodevbro.blockman
+      - letmaik.git-tree-compare
       - marp-team.marp-vscode
-      - me-dutour-mathieu.vscode-github-actions
       - mechatroner.rainbow-csv
+      - mhutchie.git-graph
       - ms-azuretools.vscode-docker
       - ms-kubernetes-tools.vscode-kubernetes-tools
       - ms-python.python
@@ -202,11 +206,14 @@
       - ms-vscode-remote.remote-ssh-edit
       - ms-vscode-remote.vscode-remote-extensionpack
       - ms-vscode.atom-keybindings
+      - ms-vscode.test-adapter-converter
       - ms-vsliveshare.vsliveshare
       - mushan.vscode-paste-image
       - pnp.polacode
       - ptweir.python-string-sql
       - qezhu.gitlink
+      - RandomFractalsInc.geo-data-viewer
+      - RandomFractalsInc.vscode-data-preview
       - redhat.vscode-yaml
       - ryu1kn.partial-diff
       - ryu1kn.text-marker
@@ -216,7 +223,9 @@
       - TakumiI.markdowntable
       - tht13.html-preview-vscode
       - vincentfiestada.cold-horizon-vscode
+      - waderyan.gitblame
       - WakaTime.vscode-wakatime
+      - withfig.fig
       - yaruson.ascii-unicode-escape
       - yzane.markdown-pdf
       - zamerick.vscode-caddyfile-syntax
