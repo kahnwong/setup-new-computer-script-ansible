@@ -2,3 +2,4 @@ config
 secrets.yaml
 work.fish
 mac-cli/
+credentials

@@ -105,6 +105,7 @@
       ### utilities
       - aria2
       - bat
+      - bpytop
       - colordiff
       - curl
       - duf
@@ -143,9 +144,11 @@
       - tmux
 
     npm_packages:
+      - "@jaebradley/wakatime-cli"
       - iponmap
 
     python_modules:
+      - nbpreview
       - topydo
       - topydo[columns]
       - trufflehog
@@ -170,6 +173,8 @@
       - bungcip.better-toml
       - christian-kohler.path-intellisense
       - cschleiden.vscode-github-actions
+      - DavidAnson.vscode-markdownlint
+      - davidfreer.go-to-character-position
       - dongfg.vscode-beancount-formatter
       - donjayamanne.python-environment-manager
       - dorzey.vscode-sqlfluff
@@ -187,13 +192,14 @@
       - helgardrichard.helium-icon-theme
       - iceyer.toml-formatter
       - joffreykern.markdown-toc
-      - k9982874.github-gist-explorer
+      - johnpapa.vscode-peacock
       - Lencerf.beancount
       - leodevbro.blockman
       - letmaik.git-tree-compare
       - marp-team.marp-vscode
       - mechatroner.rainbow-csv
       - mhutchie.git-graph
+      - mohitsingh.repo
       - ms-azuretools.vscode-docker
       - ms-kubernetes-tools.vscode-kubernetes-tools
       - ms-python.python
@@ -215,14 +221,17 @@
       - RandomFractalsInc.geo-data-viewer
       - RandomFractalsInc.vscode-data-preview
       - redhat.vscode-yaml
+      - Rubymaniac.vscode-paste-and-indent
       - ryu1kn.partial-diff
       - ryu1kn.text-marker
       - shakram02.bash-beautify
+      - SimonSiefke.prettier-vscode
       - sourcery.sourcery
       - TabNine.tabnine-vscode
       - TakumiI.markdowntable
       - tht13.html-preview-vscode
       - vincentfiestada.cold-horizon-vscode
+      - vsls-contrib.gistfs
       - waderyan.gitblame
       - WakaTime.vscode-wakatime
       - withfig.fig
@@ -485,6 +494,11 @@
 
     - name: "Write Wakatime Config"
       copy: src=./dotfiles/.wakatime.cfg dest=~/.wakatime.cfg force=no
+
+    - name: "Write AWS Config"
+      copy: |
+        src=./dotfiles/.aws/config dest=~/.aws/config force=no
+        src=./dotfiles/.aws/credentials dest=~/.aws/credentials force=no
 
 - name: Setup nvim
   hosts: localhost
