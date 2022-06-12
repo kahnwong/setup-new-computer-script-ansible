@@ -80,6 +80,7 @@
       - ctop
       - dive
       - lazydocker
+      - aquasecurity/trivy/trivy
       ### git
       - act
       - gh
