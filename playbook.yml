@@ -24,6 +24,7 @@
       - fig
       - firefox
       - firefox-nightly
+      - google-cloud-sdk
       - flameshot
       - flycut
       - fork
@@ -192,6 +193,7 @@
       - hbenl.vscode-test-explorer
       - helgardrichard.helium-icon-theme
       - iceyer.toml-formatter
+      - Infracost.infracost
       - joffreykern.markdown-toc
       - johnpapa.vscode-peacock
       - Lencerf.beancount
