@@ -9,5 +9,6 @@ else
 endif
 
 Plug 'wakatime/vim-wakatime'
+Plug 'jvirtanen/vim-hcl'
 
 call plug#end()
