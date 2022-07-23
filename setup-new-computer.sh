@@ -23,4 +23,4 @@ sudo chown -R $(whoami) $(brew --prefix)/*
 
 echo "========== Executing Ansible Playbook =========="
 brew install ansible
-ansible-playbook playbook.yml --ask-become-pass
+ansible-playbook playbook.yaml --ask-become-pass
