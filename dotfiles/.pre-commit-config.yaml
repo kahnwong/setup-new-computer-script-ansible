@@ -17,6 +17,20 @@ repos:
       - id: detect-private-key
       - id: fix-byte-order-marker
       - id: mixed-line-ending
+  - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
+    rev: 0.2.2
+    hooks:
+      - id: yamlfmt
+        args: [--mapping, "2", --sequence, "4", --offset, "2", --width, "150", --preserve-quotes]
+        exclude: ^.github/dependabot.yml
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.32.0
+    hooks:
+      - id: markdownlint
+        args: [--ignore, node_modules, --ignore, src, --fix, --disable, MD013]
+  ###################
+  # PYTHON
+  ###################
   - repo: https://github.com/psf/black
     rev: 22.6.0
     hooks:
@@ -52,33 +66,38 @@ repos:
     rev: v0.3.1
     hooks:
       - id: absolufy-imports
+  ###################
+  # DOCKER
+  ###################
   - repo: https://github.com/AleksaC/hadolint-py
     rev: v2.10.0
     hooks:
       - id: hadolint
         args: [--ignore, DL3025, --ignore, DL3018, --ignore, DL3033, --ignore, DL3013, --ignore, SC2174, --ignore, DL3045]
-  # - repo: https://github.com/antonbabenko/pre-commit-terraform
-  #   rev: v1.74.1
-  #   hooks:
-  #     - id: terraform_fmt
-  #     - id: terraform_docs
-  #       args:
-  #         - --args=--config=.terraform-docs.yml
-  #     - id: terraform_tflint
-  #     - id: terraform_tfsec
-  # - repo: https://github.com/sqlfluff/sqlfluff
-  #   rev: 1.2.1
-  #   hooks:
-  #     - id: sqlfluff-lint
-  #     - id: sqlfluff-fix
-  - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-    rev: 0.2.2
+  ###################
+  # HASHICORP
+  ###################
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.74.1
     hooks:
-      - id: yamlfmt
-        args: [--mapping, "2", --sequence, "4", --offset, "2", --width, "150", --preserve-quotes]
-        exclude: ^.github/dependabot.yml
-  - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.32.0
+      - id: terraform_fmt
+      - id: terraform_docs
+        args:
+          - --args=--config=.terraform-docs.yml
+      - id: terraform_tflint
+      - id: terraform_tfsec
+  # - repo: https://github.com/gruntwork-io/pre-commit
+  #   rev: v0.1.17
+  #   hooks:
+  #     # - id: terraform-fmt
+  #     # - id: terraform-validate
+  #     # - id: tflint
+  #     - id: terragrunt-hclfmt
+  ###################
+  # SQL
+  ###################
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 1.2.1
     hooks:
-      - id: markdownlint
-        args: [--ignore, node_modules, --ignore, src, --fix, --disable, MD013]
+      - id: sqlfluff-lint
+      - id: sqlfluff-fix
