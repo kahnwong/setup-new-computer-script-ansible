@@ -25,12 +25,12 @@
         - fig
         - firefox
         - firefox-nightly
-        - google-cloud-sdk
         - flameshot
         - flycut
         - fork
         - gitup
         - google-chrome
+        - google-cloud-sdk
         - hot
         - iina
         - iterm2
@@ -38,6 +38,7 @@
         - jellyfin-media-player
         - jupyter-notebook-viewer
         - keepingyouawake
+        - lens
         - logitech-camera-settings
         - logitech-options
         - macdown
@@ -53,10 +54,11 @@
         - pgadmin4
         - postman
         - protonvpn
-        # - qgis
+      # - qgis
         - simple-comic
         - slack
         - spectacle
+        - spotify
         - standard-notes
         - stats
         - syncthing
@@ -78,40 +80,51 @@
         - apache-spark
         - visidata
         - sqlfluff
-        ### docker
+      ### docker
         - ctop
         - dive
         - lazydocker
         - aquasecurity/trivy/trivy
-        ### git
+      ### git
         - act
         - gh
         - git
         - git-delta
         - git-xargs
+        - gitleaks
         - pre-commit
-        ### python
+      ### k8s
+        - helm
+        - kubectl
+      ### python
         - black
         - pipenv
         - pipx
         - pyenv-virtualenv
         - pyenv-which-ext
         - pyenv
-        ### terraform
-        - terraform-docs
+      ### terraform
+        - atlas
+        - iam-policy-json-to-terraform
         - terraform
+        - terraform-docs
+        - terraformer
+        - terragrunt
         - tflint
         - tfsec
-        ### shell
+      ### shell
         - fish
         - starship
-        ### utilities
+      ### utilities
         - aria2
         - bat
         - bpytop
         - colordiff
         - curl
+        - difftastic
+        - dog
         - duf
+        - dust
         - exa
         - fd
         - fx
@@ -122,7 +135,9 @@
         - htop
         - httpie
         - jq
+        - markdownlint-cli
         - ncdu
+        - procs
         - ripgrep
         - rsync
         - sops
@@ -132,7 +147,7 @@
         - watch
         - wget
         - yt-dlp
-        ### misc
+      ### misc
         - awscli
         - caddy
         - geckodriver
