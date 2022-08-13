@@ -1,8 +1,8 @@
-#################################
+################
 # FISH
-#################################
+################
 # default
-set PATH /Users/$USER/.pyenv/shims ~/.local/bin /usr/local/bin /opt/homebrew/bin ~/.pyenv/versions/cli/bin /bin /sbin /usr/bin /usr/sbin /usr/local/sbin
+set PATH ~/.local/bin /usr/local/bin /opt/homebrew/bin /bin /sbin /usr/bin /usr/sbin /usr/local/sbin
 
 # for making escape key work as meta, need to suppress it
 set fish_escape_delay_ms 3000
@@ -11,32 +11,38 @@ set fish_escape_delay_ms 3000
 set -g fish_greeting
 
 
-#################################
-# THEME
-#################################
+################
+# PROMPT
+################
 ### STARSHIP
 starship init fish | source
 
-#################################
-# TOOLS
-#################################
-######## GPG ########
+
+################
+# GPG
+################
 set GPG_TTY tty
 
-######## pyenv ########
+
+################
+# pyenv
+################
 set -g PYENV_ROOT $HOME/.pyenv
 set PYENV_VERSION 3.10.3
 status is-interactive; and pyenv init --path | source
 pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
 
-######## pipenv ########
+
+################
+# pipenv
+################
 set pipenv_fish_fancy yes
 
-#################################
-# alias
-#################################
-######## topydo ########
+
+################
+# topydo
+################
 function t
     topydo $argv
 end
@@ -49,11 +55,18 @@ function tr
     topydo ls -- -@recurring
 end
 
+function tw
+    topydo @work
+end
+
 function tc
     topydo columns
 end
 
-# ######## taskwarrior ########
+
+################
+# taskwarrior
+################
 # function t
 #     task $argv
 # end
@@ -67,7 +80,9 @@ end
 # end
 
 
-######## git ########
+################
+# git
+################
 function gg
     git log --graph --oneline --all
 end
@@ -80,8 +95,13 @@ function diff-latest
     git diff HEAD~1..HEAD
 end
 
+function diff
+    difft $argv
+end
 
-######## the rest ########
+################
+# misc
+################
 function budget
     fava -p 5004 ~/Cloud/Apps/fava/beans.beancount
 end
@@ -104,4 +124,44 @@ end
 
 function cat
     bat $argv
+end
+
+function dig
+    dog $argv
+end
+
+function du
+    dust $argv
+end
+
+function ps
+    procs $argv
+end
+
+function vi
+    nvim $argv
+end
+
+################
+# terraform
+################
+function init-terraformer
+    terraform state replace-provider -auto-approve registry.terraform.io/-/aws hashicorp/aws && terraform init
+end
+
+function tf-cost
+    infracost breakdown \
+        --format html \
+        --out-file infracost-report.html \
+        --usage-file /tmp/ignore.yml \
+        --sync-usage-file \
+        --path .
+end
+
+
+################
+# vscode
+################
+function rcode
+    code --folder-uri=vscode-remote://ssh-remote+nuc/root/$argv/
 end

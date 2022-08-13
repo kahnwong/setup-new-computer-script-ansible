@@ -181,6 +181,7 @@
         - 539883307 # LINE
         - 568494494 # pocket
         - 585829637 # todoist
+        - 1274495053 # microsoft todo
 
       vscode_extensions:
         - 4ops.terraform
@@ -353,9 +354,6 @@
           executable: /opt/homebrew/bin/pipx
         with_items: "{{ python_modules }}"
 
-      - name: Installing Mac-CLI
-        shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/guarinogabriel/mac-cli/master/mac-cli/tools/install)"
-
       - name: Installing Default Python
         shell: /opt/homebrew/bin/pyenv install -s 3.10.3
 
@@ -524,8 +522,8 @@
 
       - name: Write topydo Config
         copy: |
-          src=./dotfiles/topydo dest=~/.topydo force=no
-          src=./dotfiles/topydo_columns dest=~/.topydo_columns force=no
+          src=./dotfiles/.topydo dest=~/.topydo force=no
+          src=./dotfiles/.topydo_columns dest=~/.topydo_columns force=no
 
       - name: Write vscode Config
         copy: src=./dotfiles/vscode_settings.json dest="~/Library/Application Support/Code/User/settings.json" force=no
