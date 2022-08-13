@@ -76,6 +76,13 @@
         - zoom
 
       brew_packages:
+      ### build env
+        - openssl
+        - readline
+        - sqlite3
+        - tcl-tk
+        - xz
+        - zlib
       ### ds & ml
         - apache-spark
         - visidata
