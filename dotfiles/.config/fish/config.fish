@@ -41,6 +41,13 @@ set pipenv_fish_fancy yes
 
 
 ################
+# golang
+################
+set GOPATH ~/go
+set PATH $PATH:$GOPATH/bin
+
+
+################
 # topydo
 ################
 function t

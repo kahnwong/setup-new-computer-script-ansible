@@ -8,15 +8,12 @@ threshold = 30
 style = "bold red"
 
 [aws]
-disabled = true
-# format = " [$symbol$profile]($style) "
+disabled = false
 format = "[$profile]($style) "
 style = "bold #F79400"
-symbol = "\ue7ad "
-[aws.region_aliases]
-#ap-southeast-2 = "au"
-#us-east-1 = "va"
-ap-southeast-1 = "sg"
+# [aws.region_aliases]
+# ap-southeast-2 = "au"
+# ap-southeast-1 = "sg"
 
 [gcloud]
 disabled = true
@@ -43,12 +40,12 @@ behind = "⇣${count}"
 
 [python]
 disabled = false
-format = 'via [${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\))]($style)'
+format = 'via [${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\))]($style) '
 symbol = "\uE235"
 # style = "#026F9C"
 
 [nodejs]
-format = "via [${symbol} $version](bold green) "
+format = "via [${symbol} $version](bold green)"
 symbol = "\uE718"
 style = "#44FFD2"
 

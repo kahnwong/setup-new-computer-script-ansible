@@ -110,6 +110,8 @@
         - pyenv-virtualenv
         - pyenv-which-ext
         - pyenv
+      ### golang
+        - golangci-lint
       ### terraform
         - atlas
         - iam-policy-json-to-terraform
@@ -211,6 +213,7 @@
         - gerane.Language-TodoTXT
         - GitHub.copilot
         - GitHub.vscode-pull-request-github
+        - golang.go
         - GrapeCity.gc-excelviewer
         - hancel.markdown-image
         - hashicorp.hcl
@@ -227,6 +230,7 @@
         - marp-team.marp-vscode
         - mechatroner.rainbow-csv
         - mhutchie.git-graph
+        - mindaro-dev.file-downloader
         - mohitsingh.repo
         - ms-azuretools.vscode-docker
         - ms-kubernetes-tools.vscode-kubernetes-tools
@@ -370,6 +374,9 @@
         environment:
           PATH: $PATH:/opt/homebrew/bin/
 
+      - name: Installing golant lint tool
+        shell: go install golang.org/x/tools/cmd/goimports@latest
+
       - name: Install Visual Studio Code extensions
         shell: |
           code --install-extension "{{ item }}"
@@ -379,7 +386,7 @@
         shell: |
           gh extension install "{{ item }}"
         with_items: "{{ ghcli_extensions }}"
-        ignore_errors: yes # gh extension install throws error if already installed
+        ignore_errors: true # gh extension install throws error if already installed
 
   - name: System Tweaks
     hosts: localhost
