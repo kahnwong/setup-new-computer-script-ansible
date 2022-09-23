@@ -3,7 +3,7 @@ title = All
 # sortexpr = desc:importance
 groupexpr = priority,context
 show_all = 1
-filterexpr = -@blog -@work -@listen -@watch -+project -+media -@recurring -@tinkering
+filterexpr = -@blog -@work -@listen -@watch -+project -+media -@recurring -@tinkering -@community
 
 [Today]
 title = Today
@@ -12,12 +12,12 @@ groupexpr = context
 show_all = 0
 filterexpr = due:<=today
 
-[Tomorrow]
-title = Tomorrow
-sortexpr = desc:importance
-groupexpr = context
-show_all = 0
-filterexpr = due:tomorrow
+# [Tomorrow]
+# title = Tomorrow
+# sortexpr = desc:importance
+# groupexpr = context
+# show_all = 0
+# filterexpr = due:tomorrow
 
 [Work]
 title = Work
@@ -31,6 +31,13 @@ title = Tinkering
 sortexpr = asc:due
 show_all = 1
 filterexpr = @tinkering
+groupexpr = project
+
+[Community]
+title = Community
+sortexpr = asc:due
+show_all = 1
+filterexpr = @community
 groupexpr = project
 
 #[Overdue]

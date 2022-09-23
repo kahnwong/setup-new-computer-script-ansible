@@ -2,7 +2,7 @@
 # FISH
 ################
 # default
-set PATH ~/.local/bin /usr/local/bin /opt/homebrew/bin /bin /sbin /usr/bin /usr/sbin /usr/local/sbin
+set PATH /opt/homebrew/bin ~/.local/bin /usr/local/bin /bin /sbin /usr/bin /usr/sbin /usr/local/sbin
 
 # for making escape key work as meta, need to suppress it
 set fish_escape_delay_ms 3000
@@ -16,6 +16,11 @@ set -g fish_greeting
 ################
 ### STARSHIP
 starship init fish | source
+# oh-my-posh init fish | source
+# oh-my-posh init fish --config $(brew --prefix oh-my-posh)/themes/the-unnamed.omp.json | source
+
+# oh-my-posh init fish --config $(brew --prefix oh-my-posh)/themes/star.omp.json | source
+# oh-my-posh init fish --config ~/.config/oh-my-posh/kahnwong.omp.yaml | source
 
 
 ################
@@ -25,10 +30,17 @@ set GPG_TTY tty
 
 
 ################
+# golang
+################
+set GOPATH ~/go
+set PATH $PATH:$GOPATH/bin
+
+
+################
 # pyenv
 ################
 set -g PYENV_ROOT $HOME/.pyenv
-set PYENV_VERSION 3.10.3
+set PYENV_VERSION 3.10.6
 status is-interactive; and pyenv init --path | source
 pyenv init - | source
 status --is-interactive; and pyenv virtualenv-init - | source
@@ -38,13 +50,6 @@ status --is-interactive; and pyenv virtualenv-init - | source
 # pipenv
 ################
 set pipenv_fish_fancy yes
-
-
-################
-# golang
-################
-set GOPATH ~/go
-set PATH $PATH:$GOPATH/bin
 
 
 ################
@@ -106,6 +111,9 @@ function diff
     difft $argv
 end
 
+function git
+    /opt/homebrew/bin/git $argv
+end
 ################
 # misc
 ################
@@ -148,6 +156,13 @@ end
 function vi
     nvim $argv
 end
+
+
+function tere
+    set --local result (command tere $argv)
+    [ -n "$result" ] && cd -- "$result"
+end
+
 
 ################
 # terraform

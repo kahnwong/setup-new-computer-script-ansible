@@ -8,7 +8,7 @@ threshold = 30
 style = "bold red"
 
 [aws]
-disabled = false
+disabled = true
 format = "[$profile]($style) "
 style = "bold #F79400"
 # [aws.region_aliases]
@@ -45,7 +45,7 @@ symbol = "\uE235"
 # style = "#026F9C"
 
 [nodejs]
-format = "via [${symbol} $version](bold green)"
+format = "via [${symbol} $version](bold green) "
 symbol = "\uE718"
 style = "#44FFD2"
 
@@ -58,3 +58,11 @@ when = true
 style = "#00A1FA"
 shell = "fish"
 symbol = "\uf4a0 "
+
+# [status]
+# style = "bg:blue"
+# symbol = "🔴 "
+# success_symbol = "🟢 SUCCESS"
+# format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style): $status '
+# map_symbol = true
+# disabled = false

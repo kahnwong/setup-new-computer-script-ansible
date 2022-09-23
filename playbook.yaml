@@ -107,9 +107,10 @@
         - black
         - pipenv
         - pipx
+        - poetry
+        - pyenv
         - pyenv-virtualenv
         - pyenv-which-ext
-        - pyenv
       ### golang
         - golangci-lint
       ### terraform
@@ -156,6 +157,9 @@
         - watch
         - wget
         - yt-dlp
+      ### node
+        - node
+        - npm
       ### misc
         - awscli
         - caddy
@@ -165,7 +169,6 @@
         - mas
         - mpv
         - neovim
-        - node
         - task
         - tmux
 
@@ -315,10 +318,8 @@
 
       - name: Installing Homebrew Taps
         shell: |
-          brew tap homebrew/cask-versions
-          brew tap homebrew/cask-drivers
-        environment:
-          PATH: /opt/homebrew/bin
+          /opt/homebrew/bin/brew tap homebrew/cask-versions
+          /opt/homebrew/bin/brew tap homebrew/cask-drivers
         when: homebrew_check.stat.exists
 
       - name: Installing Homebrew Cask Packages
@@ -366,7 +367,7 @@
         with_items: "{{ python_modules }}"
 
       - name: Installing Default Python
-        shell: /opt/homebrew/bin/pyenv install -s 3.10.3
+        shell: /opt/homebrew/bin/pyenv install -s 3.10.6
 
       - name: Install MacOS App Store Apps
         shell: mas install {{ item }}
@@ -545,6 +546,10 @@
       - name: Write Wakatime Config
         copy: src=./dotfiles/.wakatime.cfg dest=~/.wakatime.cfg force=no
 
+      - name: Create AWS Config Directory
+        file:
+          path: ~/.aws
+          state: directory
       - name: Write AWS Config
         copy: |
           src=./dotfiles/.aws/config dest=~/.aws/config force=no

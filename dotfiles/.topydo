@@ -2,14 +2,14 @@
 focus_background_color = light-green
 
 [topydo]
-archive_filename = ~/Nextcloud/Apps/todotxt/done.txt
-filename = ~/Nextcloud/Apps/todotxt/todo.txt
+archive_filename = /Users/kahnwong/Nextcloud/Apps/todotxt/done.txt
+filename = /Users/kahnwong/Nextcloud/Apps/todotxt/todo.txt
 
 [ls]
 hidden_item_tags=blog,listen,watch
 
 [edit]
-editor = /opt/homebrew/bin/nvim
+editor = /usr/bin/vi
 
 [colorscheme]
 context_color = cyan
