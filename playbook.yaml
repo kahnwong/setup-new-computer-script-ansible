@@ -41,6 +41,7 @@
         - lens
         - logitech-camera-settings
         - logitech-options
+        - maccy
         - macdown
         - mactracker
         - michaelvillar-timer
@@ -223,6 +224,7 @@
         - hashicorp.terraform
         - hbenl.vscode-test-explorer
         - helgardrichard.helium-icon-theme
+        - hilleer.yaml-plus-json
         - iceyer.toml-formatter
         - Infracost.infracost
         - joffreykern.markdown-toc
