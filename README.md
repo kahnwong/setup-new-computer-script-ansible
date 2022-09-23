@@ -33,54 +33,6 @@ https://docs.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-
 - set `tap to single click`
 - set `three-finger drag`
 
-### Install fish plugins
-
-```bash
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-fisher install jethrokuan/z
-fisher install franciscolourenco/done
-fisher install jorgebucaran/autopair.fish
-fisher install jorgebucaran/nvm.fish
-fisher install meaningful-ooo/sponge
-```
-
-~~### Setup nvim plugins~~
-~~If you didn't copy existing github ssh key, add your ssh key to github and install nvim plugins manually.~~
-
-## Post Installation Tips
-
-### pyenv
-
-```bash
-# lisit available python versions
-pyenv install --list
-
-# install specific version
-pyenv install 3.8.0
-
-# list installed versions
-pyenv versions
-
-# activate new env
-pyenv shell 3.8.0 # support multiple version
-
-# config venv
-pyenv virtualenv 3.8.0 my-data-project
-```
-
-### pipenv
-
-```bash
-pipenv --python 3.7
-pipenv install jupyterlab==2.2.9
-pipenv install
-
-pipenv --rm
-
-pipenv run jupyter lab
-pipenv run python main.py
-```
-
 ### homebrew
 
 ```bash
@@ -99,20 +51,6 @@ brew switch git list
 
 # Roll back to a currently installed previous version (example: git 2.25.0)
 brew switch git 2.25.0
-```
-
-### pre-commit
-
-```bash
-# run pre-commit hooks for all files in folder
-$ pre-commit run --files **/*.*
-
-# run pre-commit hooks for all files in the repo
-$ pre-commit run --all-files
-
-# enable for downloaded repo
-$ git config --global init.templateDir ~/.git-template
-$ pre-commit init-templatedir ~/.git-template
 ```
 
 ## vscode
