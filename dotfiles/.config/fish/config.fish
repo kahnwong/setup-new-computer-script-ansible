@@ -2,7 +2,15 @@
 # FISH
 ################
 # default
-set PATH /opt/homebrew/bin ~/.local/bin /usr/local/bin /bin /sbin /usr/bin /usr/sbin /usr/local/sbin
+set PATH \
+    /opt/homebrew/bin \
+    ~/.local/bin \
+    /usr/local/bin \
+    /usr/local/sbin \
+    /usr/bin \
+    /usr/sbin \
+    /bin \
+    /sbin
 
 # for making escape key work as meta, need to suppress it
 set fish_escape_delay_ms 3000
@@ -111,9 +119,7 @@ function diff
     difft $argv
 end
 
-function git
-    /opt/homebrew/bin/git $argv
-end
+
 ################
 # misc
 ################
