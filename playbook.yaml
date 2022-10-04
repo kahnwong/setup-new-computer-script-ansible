@@ -39,7 +39,7 @@
         - keepingyouawake
         - lens
         - logitech-camera-settings
-        - logitech-options
+        - logi-options-plus
         - maccy
         - macdown
         - mactracker
@@ -47,6 +47,7 @@
         - microsoft-remote-desktop
         - microsoft-teams
         - miro
+        - mongodb-compass
         - muzzle
         - nextcloud
         - notion
@@ -54,7 +55,6 @@
         - pgadmin4
         - postman
         - protonvpn
-      # - qgis
         - simple-comic
         - slack
         - spectacle
@@ -74,6 +74,7 @@
         - whatsapp
         - xnviewmp
         - zoom
+    # - qgis
 
       brew_packages:
       ### build env
