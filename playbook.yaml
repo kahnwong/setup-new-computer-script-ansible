@@ -129,7 +129,7 @@
       ### utilities
         - aria2
         - bat
-        - bpytop
+        - btop
         - colordiff
         - curl
         - difftastic
@@ -191,7 +191,6 @@
         - 1423210932 # flow - focus & pomodoro timer
         - 1451685025 # wireguard
         - 1475387142 # tailscale
-        - 1510445899 # meeter
         - 539883307 # LINE
         - 568494494 # pocket
         - 585829637 # todoist
