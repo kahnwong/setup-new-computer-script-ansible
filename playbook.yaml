@@ -36,6 +36,7 @@
         - itsycal
         - jellyfin-media-player
         - jupyter-notebook-viewer
+        - kap
         - keepingyouawake
         - lens
         - logitech-camera-settings
@@ -134,7 +135,6 @@
         - curl
         - difftastic
         - dog
-        - tere
         - duf
         - dust
         - exa
@@ -153,11 +153,13 @@
         - ripgrep
         - rsync
         - sops
+        - tere
         - thefuck
         - tldr
         - tree
         - watch
         - wget
+        - yq
         - yt-dlp
       ### node
         - node
@@ -168,9 +170,13 @@
         - geckodriver
         - hugo
         - java
+        - k6
         - mas
         - mpv
         - neovim
+        - shellcheck
+        - docker-credential-helper-ecr
+        - shfmt
         - task
         - tmux
 
@@ -193,13 +199,13 @@
         - 1475387142 # tailscale
         - 539883307 # LINE
         - 568494494 # pocket
-        - 585829637 # todoist
         - 1274495053 # microsoft todo
 
       vscode_extensions:
         - 4ops.terraform
         - akamud.vscode-theme-onelight
         - amazonwebservices.aws-toolkit-vscode
+        - antfu.slidev
         - bierner.markdown-mermaid
         - bladnman.auto-align
         - bmalehorn.vscode-fish
@@ -219,6 +225,7 @@
         - GitHub.vscode-pull-request-github
         - golang.go
         - GrapeCity.gc-excelviewer
+        - Gruntfuggly.todo-tree
         - hancel.markdown-image
         - hashicorp.hcl
         - hashicorp.terraform
@@ -244,6 +251,8 @@
         - ms-toolsai.jupyter
         - ms-toolsai.jupyter-keymap
         - ms-toolsai.jupyter-renderers
+        - ms-toolsai.vscode-jupyter-cell-tags
+        - ms-toolsai.vscode-jupyter-slideshow
         - ms-vscode-remote.remote-containers
         - ms-vscode-remote.remote-ssh
         - ms-vscode-remote.remote-ssh-edit
@@ -261,9 +270,9 @@
         - Rubymaniac.vscode-paste-and-indent
         - ryu1kn.partial-diff
         - ryu1kn.text-marker
-        - shakram02.bash-beautify
         - SimonSiefke.prettier-vscode
         - sourcery.sourcery
+        - streetsidesoftware.code-spell-checker
         - TabNine.tabnine-vscode
         - TakumiI.markdowntable
         - tht13.html-preview-vscode
@@ -573,3 +582,11 @@
         copy: |
           src=./dotfiles/.aws/config dest=~/.aws/config force=no
           src=./dotfiles/.aws/credentials dest=~/.aws/credentials force=no
+
+      - name: Create Docker Config Directory
+        file:
+          path: ~/.docker
+          state: directory
+      - name: Write Docker Config
+        copy: |
+          src=./dotfiles/.docker/config.json dest=~/.docker/config.json force=no
