@@ -119,6 +119,10 @@ function diff
     difft $argv
 end
 
+function add-git-ssh-agent
+    ssh-add --apple-use-keychain ~/.ssh/github_signing_key
+end
+
 
 ################
 # misc
@@ -144,7 +148,7 @@ function ls
 end
 
 function cat
-    bat $argv
+    bat --theme "Monokai Extended" $argv
 end
 
 function dig
@@ -163,12 +167,18 @@ function vi
     nvim $argv
 end
 
-
 function tere
     set --local result (command tere $argv)
     [ -n "$result" ] && cd -- "$result"
 end
 
+function weather
+    curl wttr.in
+end
+
+function docker-rmi
+    docker images | grep $argv | awk '{print $3}' | xargs docker rmi
+end
 
 ################
 # terraform
@@ -193,3 +203,18 @@ end
 function rcode
     code --folder-uri=vscode-remote://ssh-remote+nuc/root/$argv/
 end
+
+
+################
+# gcp
+################
+function list-gcp-resources
+    echo "getting resources: $argv"
+    gcloud asset search-all-resources \
+        --scope=projects/$argv \
+        --page-size=500 \
+        --format=json \
+            > $argv.json
+end
+
+set GOOGLE_APPLICATION_CREDENTIALS $HOME/.config/gcloud/application_default_credentials.json

@@ -166,6 +166,7 @@
         - npm
       ### misc
         - awscli
+        - bitwarden-cli
         - caddy
         - geckodriver
         - hugo
