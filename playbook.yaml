@@ -184,6 +184,7 @@
       npm_packages:
         - "@jaebradley/wakatime-cli"
         - iponmap
+        - markdown-link-check
 
       python_modules:
         - nbpreview
